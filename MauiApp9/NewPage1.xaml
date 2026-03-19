@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp9.NewPage1"
+             Title="NewPage1">
+    <VerticalStackLayout>
+        <Label 
+            Text="Mój dziennik"/>
+        <Editor
+            x:Name="entryEditor"
+            Placeholder="Dodaj wpis"
+            AutoSize="TextChanges"
+            Margin="10"/>
+        <Button
+            Clicked="OnAddButtonClicked"
+            Text="Dodaj wpis"
+            Margin="10"
+            />
+        <ScrollView>
+            <Label
+                x:Name="entriesLabel"
+                Margin="10"/>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
