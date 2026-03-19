@@ -7,22 +7,20 @@ namespace MauiApp9;
 
 public partial class NewPage1 : ContentPage
 {
-
 	public NewPage1()
 	{
 		InitializeComponent();
-		entriesLabel.Text = $"{File.Exists(Path.Combine(FileSystem.AppDataDirectory, "dziennik.txt")) }";
+		refreshNote();
     }
 	private async void OnAddButtonClicked(object sender, EventArgs e)
 	{
 		string pathToFile = Path.Combine(FileSystem.AppDataDirectory, "dziennik.txt");
 
-		if (File.Exists(pathToFile))
-		{
-			string noteText = $"{DateTime.Now:dd.MM.yyyy HH:mm}  {entryEditor.Text}";
-			if (!string.IsNullOrWhiteSpace(noteText))
+			if (!string.IsNullOrWhiteSpace(entryEditor.Text))
 			{
+				string noteText = $"[{DateTime.Now:dd.MM.yyyy HH:mm}] {entryEditor.Text} \n";
 				await File.AppendAllTextAsync(pathToFile, noteText );
+				
 				entryEditor.Text = "";
 				await refreshNote();
 			}
@@ -30,13 +28,7 @@ public partial class NewPage1 : ContentPage
 			{
 				await DisplayAlert("Błąd", "Nie można zapisać pustego tekstu.", "OK");
 			}
-		}
-		else
-		{
-			await DisplayAlert("Błąd", "Plik nie istnieje.", "OK");
-		}
 	}
-
 	private async Task refreshNote()
 	{
         string pathToFile = Path.Combine(FileSystem.AppDataDirectory, "dziennik.txt");
@@ -48,8 +40,28 @@ public partial class NewPage1 : ContentPage
 			if(!string.IsNullOrWhiteSpace(note))
 			{
 				entriesLabel.Text = note;
-
 			}
+			else
+			{
+				entriesLabel.Text = "Dziennik jest pusty.";
+            }
 		}
+		else
+		{
+			entriesLabel.Text = "Brak wpisów w dzienniku.";
+        }
 	}
+	private async void OnClearButtonClicked(object sender, EventArgs e)
+	{
+
+		string pathToFile = Path.Combine(FileSystem.AppDataDirectory, "dziennik.txt");
+		bool confirm = await DisplayAlert("Potwierdzenie", "Czy na pewno chcesz wyczyścić dziennik?", "Tak", "Nie");
+		
+		if (confirm)
+		{
+			File.Delete(pathToFile);
+			await refreshNote();
+        }
+
+    }
 }
