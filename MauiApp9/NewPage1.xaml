@@ -16,6 +16,11 @@
             Text="Dodaj wpis"
             Margin="10"
             />
+        <Button
+            Clicked="OnClearButtonClicked"
+            Text="Wyczyść dziennik"
+            Margin="10"
+            />
         <ScrollView>
             <Label
                 x:Name="entriesLabel"

@@ -13,19 +13,13 @@
             string noteText = textEntry.Text;
             if (!string.IsNullOrWhiteSpace(noteText))
             {
-                if (File.Exists(pathToFile))
-                {
-                    await File.WriteAllTextAsync(pathToFile, noteText);
-                    resultLabel.Text = "Zapisano do pliku.";
-                }
-                else
-                {
-                    resultLabel.Text = "Nie można znaleźć pliku.";
-                }
+                await File.AppendAllTextAsync(pathToFile, noteText);
+                textEntry.Text = "";       
+                resultLabel.Text = "Zapisano do pliku.";
             }
             else
             {
-                resultLabel.Text = "Nie można zapisać pustego tekstu.";
+                await DisplayAlert("Błąd", "Nie można zapisać pustego tekstu.", "OK");
             }
         }
         private async void OnReadButtonClicked(object? sender, EventArgs e)
