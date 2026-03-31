@@ -38,3 +38,16 @@
         }
     }
 }
+
+//**************************************************************************
+//Nazwa funkcji: OnSaveButtonClicked
+//Opis funkcji : Funckja zapisuje do pliku
+//Parametry:  sender - obiekt który wywołał funkcję, e - argumenty zdarzenia
+//
+//zwracany typ brak
+// **************************************************************************
+//Nazwa funkcji : OnReadButtonClicked
+//Opis funkcji: Funkcja odczytuje plik
+//Parametry: sender - obiekt, który wywołał funkcję, e - argumenty zdarzenia 
+//****************************************************************************
+
