@@ -65,3 +65,14 @@ public partial class NewPage1 : ContentPage
 
     }
 }
+//******************************************************************
+//Nazwa funkcji: OnAddButtonClicked
+//Opis funkcji: Funkcja służy do dodania notatki, pobiera tekst z entryEditor i dodaje go do pliku tekstowego dziennik.txt
+//Parametry Object sender obiekt wywołujacy zdarzenie, EventArgs e dane dotyczące zdarzenia 
+//zwracany typ brak 
+//*******************************************************************
+//Nazwa funkcji: OnClearButtonClicked
+//Opis funkcji: Podczas kliknięcia na przycisk, funkcja czyści dane.
+//Parametry Object sender obiekt wywołujacy zdarzenie, EventArgs e dane dotyczące zdarzenia
+//Zwracany typ brak
+//*******************************************************************
